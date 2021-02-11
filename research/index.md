@@ -1,9 +1,9 @@
 ---
 layout: layouts/post.njk
-title: About Me
+title: Research
 tags:
   - nav
-navtitle: About
+navtitle: Research
 templateClass: tmpl-post
 ---
 
