@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ renderData.title or title or metadata.title }}</title>
     <meta name="Description" content="{{ renderData.description or description or metadata.description }}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> 
+
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
     <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
   </head>
   <body class="stack flex col">
     <header class="flex row center">
-      <img src="{{ '/img/logo.svg' | url }}">
+      <div class="flex stack col center">
+        <img src="{{ '/img/logo.svg' | url }}">
+        <h1>Rosi Grillmair</h1>
+      </div>
     </header>
 
     <div class="flex row">
       <nav>
-        <ul>
-          {%- for nav in collections.nav | reverse -%}
-          <li class="nav-item{% if nav.url == page.url %} nav-item-active{% endif %}"><a href="{{ nav.url | url }}">{{ nav.data.navtitle }} ' {{ nav.url }}</a></li>
+        <ul class="flex col">
+          {%- for nav in collections.nav -%}
+          <li class="nav-item{% if nav.url == page.url %} nav-item-active{% endif %}"><a href="{{ nav.url | url }}">{{ nav.data.navtitle }}</a></li>
           {%- endfor -%}
         </ul>
       </nav>

@@ -49,6 +49,14 @@ body {
   margin-top: var(--s1);
 }
 
+.stack-half > * + * {
+  margin-top: calc(var(--s1) * 0.5);
+}
+
+.stack-double > * + * {
+  margin-top: var(--s2);
+}
+
 .flex {
   display: flex;
 }
@@ -70,9 +78,18 @@ body {
 p {
   font-size: var(--s0);
   font-weight: normal;
+  font-family: serif;
 }
 
 /* TODO set font weight */
+
+h1,
+h2,
+h3 {
+  line-height: 1;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
 
 h1 {
   font-size: var(--s3);
@@ -84,6 +101,11 @@ h2 {
   font-weight: bold;
 }
 
+h2 time {
+  font-size: var(--s0);
+  font-weight: normal;
+}
+
 h3 {
   font-size: var(--s1);
   font-weight: bold;
@@ -93,6 +115,41 @@ main {
   max-width: 80ch;
 }
 
+header {
+  border-bottom: 1px solid var(--darkgray);
+}
+
 header img {
   max-height: var(--s5);
+}
+
+header h1 {
+  text-transform: uppercase;
+}
+
+nav {
+  margin: 0 var(--s2) var(--s0) var(--s0);
+}
+
+nav ul {
+  list-style-type: none;
+  font-size: var(--s0);
+}
+
+nav ul a,
+nav ul a:visited {
+  color: var(--darkgray);
+  text-decoration: none;
+  padding: var(--s1) * 0.25;
+  display: inline-block;
+  width: 100%;
+}
+
+main.tmpl-home ol {
+  list-style-type: none;
+}
+
+main.tmpl-home .postlist h2 {
+  text-decoration: underline;
+  text-decoration-color: rgba( 5, 0, 255, 0.5 );
 }
