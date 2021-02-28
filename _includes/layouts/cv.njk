@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-post stack
+---
+
+<section class="flex row">
+	<div id="lang" class="flex row">
+		<div id="de" class="button active">DE</div>
+		<div id="en" class="button">EN</div>
+		<div id="slider"></div>
+	</div>
+</section>
+
+<div class="flex row">
+	{{ content | safe }}
+</div>
+
+
+<p><a href="{{ '/' | url }}">← Home</a></p>

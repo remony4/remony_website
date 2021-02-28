@@ -7,6 +7,7 @@
   --navy: #17050F;
   --blue: #082840;
   --white: #fff;
+  --main: rgba( 5, 0, 255, 0.5 );
 
   --ratio: 1.61803398875;
   --s-5: calc(var(--s-4) / var(--ratio));
@@ -81,6 +82,18 @@ p {
   font-family: serif;
 }
 
+.button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out 0.1s;
+}
+
+.button.active {
+  color: var(--white);
+}
+
 /* TODO set font weight */
 
 h1,
@@ -117,18 +130,23 @@ main {
 
 header {
   border-bottom: 1px solid var(--darkgray);
+  padding: var(--s2) 0;
+}
+
+header + * {
+  margin-top: var(--s2);
 }
 
 header img {
   max-height: var(--s5);
 }
 
-header h1 {
+header h2 {
   text-transform: uppercase;
 }
 
 nav {
-  margin: 0 var(--s2) var(--s0) var(--s0);
+  margin: 0 var(--s3) var(--s1) var(--s0);
 }
 
 nav ul {
@@ -140,7 +158,7 @@ nav ul a,
 nav ul a:visited {
   color: var(--darkgray);
   text-decoration: none;
-  padding: var(--s1) * 0.25;
+  padding: var(--s0);
   display: inline-block;
   width: 100%;
 }
@@ -151,5 +169,44 @@ main.tmpl-home ol {
 
 main.tmpl-home .postlist h2 {
   text-decoration: underline;
-  text-decoration-color: rgba( 5, 0, 255, 0.5 );
+  text-decoration-color: var(--main);
+}
+
+#lang {
+  border: 1px solid var(--darkgray);
+  position: relative;
+  z-index: 1;
+}
+
+#slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background-color: var(--main);
+  z-index: -1;
+  transition: transform 0.33s ease-in-out;
+}
+
+#slider.eng {
+  transform: translateX( 100% );
+}
+
+main#cv {
+  overflow-x: hidden;
+}
+
+main#cv > div {
+  width: 200%;
+  transition: transform 0.33s ease-in-out;
+}
+
+main#cv > div.eng {
+  width: 200%;
+  transform: translateX( -50% );
+}
+
+main#cv > section {
+  justify-content: flex-end;
 }
