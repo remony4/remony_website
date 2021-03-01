@@ -23,10 +23,11 @@
 
     <div class="flex row">
       <nav>
-        <ul class="flex col">
+      {{ collections.all | eleventyNavigation | eleventyNavigationToHtml({ listClass: "flex col", activeKey: eleventyNavigation.key, activeAnchorClass: "active" }) | safe }}
+        <!-- <ul class="flex col">
           {%- for nav in collections.nav -%}
           <li class="nav-item{% if nav.url == page.url %} nav-item-active{% endif %}"><a href="{{ nav.url | url }}">{{ nav.data.navtitle }}</a></li>
-          {%- endfor -%}
+          {%- endfor -%} -->
         </ul>
       </nav>
 

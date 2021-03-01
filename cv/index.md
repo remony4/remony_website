@@ -1,9 +1,8 @@
 ---
 layout: layouts/cv.njk
 title: CV
-tags:
-  - nav
-navtitle: CV
+eleventyNavigation:
+    key: CV
 ---
 
 <div class='german stack'> 

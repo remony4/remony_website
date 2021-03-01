@@ -34,7 +34,7 @@ body {
   padding: 0;
   margin: 0;
   font-size: 17px;
-  font-family: sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif, "Helvetica Roman", Icons;
   color: var(--darkgray);
   background-color: var(--white);
   line-height: 1.61803398875;
@@ -79,11 +79,9 @@ body {
 p {
   font-size: var(--s0);
   font-weight: normal;
-  font-family: serif;
 }
 
 .button {
-  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   padding: 0.75rem 1rem;
   cursor: pointer;
@@ -100,7 +98,6 @@ h1,
 h2,
 h3 {
   line-height: 1;
-  font-family: 'Roboto', sans-serif;
   font-weight: 500;
 }
 
@@ -122,6 +119,18 @@ h2 time {
 h3 {
   font-size: var(--s1);
   font-weight: bold;
+}
+
+main ol li > h2 ~ h2 {
+  font-size: var(--s1);
+}
+
+main ol li > h2 ~ h1 {
+  font-size: var(--s2);
+}
+
+main ol li > h2 ~ h3 {
+  font-size: var(--s0);
 }
 
 main {
@@ -163,13 +172,24 @@ nav ul a:visited {
   width: 100%;
 }
 
-main.tmpl-home ol {
-  list-style-type: none;
+nav ul a:hover {
+  text-decoration: underline;
 }
 
-main.tmpl-home .postlist h2 {
-  text-decoration: underline;
-  text-decoration-color: var(--main);
+nav ul a.active {
+  font-weight: bold;
+}
+
+nav ul a + ul {
+  display: none;
+}
+
+nav ul a.active + ul {
+  display: initial;
+}
+
+main.tmpl-home ol {
+  list-style-type: none;
 }
 
 #lang {
@@ -188,6 +208,10 @@ main.tmpl-home .postlist h2 {
   z-index: -1;
   transition: transform 0.33s ease-in-out;
 }
+
+/*
+ fett im menü
+ */
 
 #slider.eng {
   transform: translateX( 100% );
@@ -209,4 +233,12 @@ main#cv > div.eng {
 
 main#cv > section {
   justify-content: flex-end;
+}
+
+.gallery {
+  width: 1000%;
+}
+
+.gallery > picture + picture {
+  margin-left: var(--s1);
 }

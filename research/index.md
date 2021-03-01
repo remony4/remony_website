@@ -1,10 +1,9 @@
 ---
 layout: layouts/post.njk
 title: Research
-tags:
-  - nav
-navtitle: Research
 templateClass: tmpl-post
+eleventyNavigation:
+    key: Research
 ---
 
 I am a person that writes stuff.

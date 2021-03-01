@@ -2,10 +2,14 @@ const { DateTime } = require('luxon');
 const fs = require('fs');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const Image = require("@11ty/eleventy-img");
+const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const path = require('path')
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.setDataDeepMerge(true);
 
   eleventyConfig.addLayoutAlias('post', 'layouts/post.njk');
@@ -25,6 +29,10 @@ module.exports = function(eleventyConfig) {
     return str.toLowerCase();
   });
 
+  eleventyConfig.addFilter( 'join', arr => {
+    return arr.join(',');
+  });
+
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter('htmlDateString', dateObj => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
@@ -38,6 +46,66 @@ module.exports = function(eleventyConfig) {
 
     return array.slice(0, n);
   });
+
+  async function imageShortcode(src, alt, sizes) {
+
+    console.log(src);
+    let metadata = await Image(src, {
+      widths: [300, 600],
+      formats: ["avif", "jpeg"]
+    });
+
+    let imageAttributes = {
+      alt,
+      sizes,
+      loading: "lazy",
+      decoding: "async",
+    };
+
+    // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
+    return Image.generateHTML(metadata, imageAttributes);
+  }
+
+  async function galleryShortCode ( gallery, alt) {
+
+    console.log( path.dirname( this.page.inputPath ) );
+
+    const dirname = path.dirname( this.page.inputPath );
+
+    console.log( gallery );
+
+    const srcs = gallery
+      .map( i => { 
+        return path.join( './', dirname, i.trim());
+      } );
+
+    const sizes = "(min-width: 30em) 50vw, 100vw";
+
+    const imageAttributes = {
+      alt,
+      sizes,
+      loading: "lazy",
+      decoding: "async",
+    };
+
+    const images = await Promise.all(
+      srcs.map( async i => {
+        const im = await Image( i, {
+          widths: [300, 600],
+          formats: ["avif", "jpeg"]
+        });
+
+        return Image.generateHTML(im, imageAttributes)
+      })
+    );
+    
+    console.log(images);
+
+    return images.join('');
+  }
+
+  eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+  eleventyConfig.addNunjucksAsyncShortcode("gallery", galleryShortCode);
 
   eleventyConfig.addCollection('tagList', require('./_11ty/getTagList'));
 
@@ -87,7 +155,7 @@ module.exports = function(eleventyConfig) {
     // This is only used for URLs (it does not affect your file structure)
     pathPrefix: '/',
 
-    markdownTemplateEngine: 'liquid',
+    markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
     passthroughFileCopy: true,
