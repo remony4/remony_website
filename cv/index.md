@@ -9,7 +9,7 @@ eleventyNavigation:
 
 ### Artist Statement
 
-Rosi Grillmair (*1991) ist Künstlerin, Programmiererin und Kunst- und Kulturvermittlerin in ihrer Heimatstadt Linz/Österreich.
+Rosi Grillmair (*1891) ist Künstlerin, Programmiererin und Kunst- und Kulturvermittlerin in ihrer Heimatstadt Linz/Österreich.
 Dort arbeitet sie sein Oktober 2020 als freischaffende Künstlerin, derzeit am Jahresprojekt “Merkwürdige Momente” das sich mit Interventionen an öffentlichen Plätzen und der Aneignung von bestehen Orten und Gegeständen beschäftigt - um diese zu künstlerischen Plattformen zu machen - kurz genug um sich zu wundern, nicht mehr.
 
 
