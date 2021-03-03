@@ -23,12 +23,7 @@
 
     <div class="flex row">
       <nav>
-      {{ collections.all | eleventyNavigation | eleventyNavigationToHtml({ listClass: "flex col", activeKey: eleventyNavigation.key, activeAnchorClass: "active" }) | safe }}
-        <!-- <ul class="flex col">
-          {%- for nav in collections.nav -%}
-          <li class="nav-item{% if nav.url == page.url %} nav-item-active{% endif %}"><a href="{{ nav.url | url }}">{{ nav.data.navtitle }}</a></li>
-          {%- endfor -%} -->
-        </ul>
+      {% include "nav.njk" %}
       </nav>
 
       <main{% if templateClass %} class="{{ templateClass }}"{% endif %}{% if title %} id="{{ title | lowercase }}"{% endif %}>
@@ -41,45 +36,41 @@
     <!-- Current page: {{ page.url | url }} -->
   </body>
   <script>
-    const getFollowingNodes = ( element ) => {
-      let r = [];
-      let nextSibling = element.nextElementSibling;
-
-      while ( nextSibling ) {
-        r.push( nextSibling );
-        nextSibling = nextSibling.nextElementSibling;
-      }
-
-      return r;
-    };
-
     window.addEventListener( 'DOMContentLoaded', ( event ) => {
 
-      const mainId = document.querySelector('main').id;
+      const main = document.querySelector('main');
+      const mainId = main.id;
 
       switch ( mainId ) {
         case 'cv':
-          console.log( 'in cv' );
           const lang = document.querySelector( '#lang' );
           const buttons = document.querySelectorAll( '#lang .button' );
-
           const container = document.querySelector( '#cv > div' );
-
           const slider = document.querySelector( '#slider' );
 
           lang.addEventListener( 'click', event => {
             
-
             buttons.forEach( b => {
                 b.classList.toggle( 'active' );
               });
-
             slider.classList.toggle( 'eng' );
-
             container.classList.toggle( 'eng' );
           })
           break;
       }
+
+      const mainClass = Array.from(main.classList)
+        .filter( cl => cl.includes( 'tmpl') )
+        .map( cl => { 
+          return cl.split( '-' )[1];
+         });
+
+      const handlers = {
+      };
+
+      mainClass.forEach( c => {
+        if ( c in handlers) handlers[c]( main );
+      });
 
     });
   </script>

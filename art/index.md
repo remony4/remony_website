@@ -1,9 +1,10 @@
 ---
-layout: layouts/post.njk
+layout: layouts/art.njk
 title: Art
 templateClass: tmpl-post
 eleventyNavigation:
     key: Art
 ---
 
-I am a person that writes stuff.
+{% set artlist = collections.art | reverse %}
+{% include "artlist.njk" %}

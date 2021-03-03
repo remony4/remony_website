@@ -1,0 +1,7 @@
+<ol reversed class="postlist stack-double">
+{% for post in artlist | reverse %}
+  <li class="stack">
+      {{ post.templateContent | safe }}
+  </li>
+{% endfor %}
+</ol>

@@ -1,10 +1,8 @@
 ---
 layout: layouts/post.njk
 title: Contact
-tags:
-  - nav
-navtitle: Contact
-templateClass: tmpl-post
+eleventyNavigation:
+    key: Contact
 ---
 
 I am a person that writes stuff.

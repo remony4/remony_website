@@ -68,18 +68,14 @@ module.exports = function(eleventyConfig) {
 
   async function galleryShortCode ( gallery, alt) {
 
-    console.log( path.dirname( this.page.inputPath ) );
-
     const dirname = path.dirname( this.page.inputPath );
-
-    console.log( gallery );
 
     const srcs = gallery
       .map( i => { 
         return path.join( './', dirname, i.trim());
       } );
 
-    const sizes = "(min-width: 30em) 50vw, 100vw";
+    const sizes = "100vw";
 
     const imageAttributes = {
       alt,
@@ -91,17 +87,18 @@ module.exports = function(eleventyConfig) {
     const images = await Promise.all(
       srcs.map( async i => {
         const im = await Image( i, {
-          widths: [300, 600],
-          formats: ["avif", "jpeg"]
+          heights: [null, 100, 200],
+          formats: ["webp", "avif", "jpeg"]
         });
-
-        return Image.generateHTML(im, imageAttributes)
+        
+        return [im, Image.generateHTML(im, imageAttributes)];
       })
     );
-    
-    console.log(images);
 
-    return images.join('');
+    const sum = images.reduce( ( acc, [ im, _ ] ) => acc + im['jpeg'][ 0 ].width , 0);
+    const html = images.reduce( ( acc, [ _, im ] ) => acc + im, "");
+
+    return `<div class="gallery flex row" style="width: ${ sum }px;">${ html }</div>`;
   }
 
   eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);

@@ -41,8 +41,8 @@ body {
   font-kerning: normal;
 }
 
-body {
-  max-width: 100ch;
+body > div {
+  justify-content: center;
 }
 
 /* UTIL CLASSES */
@@ -51,7 +51,7 @@ body {
 }
 
 .stack-half > * + * {
-  margin-top: calc(var(--s1) * 0.5);
+  margin-top: calc(var(--s0) * 0.5);
 }
 
 .stack-double > * + * {
@@ -134,7 +134,7 @@ main ol li > h2 ~ h3 {
 }
 
 main {
-  max-width: 80ch;
+  width: 80ch;
 }
 
 header {
@@ -155,7 +155,8 @@ header h2 {
 }
 
 nav {
-  margin: 0 var(--s3) var(--s1) var(--s0);
+  width: 20ch;
+  margin: 0 var(--s1) var(--s1) var(--s0);
 }
 
 nav ul {
@@ -167,7 +168,6 @@ nav ul a,
 nav ul a:visited {
   color: var(--darkgray);
   text-decoration: none;
-  padding: var(--s0);
   display: inline-block;
   width: 100%;
 }
@@ -176,7 +176,7 @@ nav ul a:hover {
   text-decoration: underline;
 }
 
-nav ul a.active {
+nav ul li.active > a {
   font-weight: bold;
 }
 
@@ -184,7 +184,11 @@ nav ul a + ul {
   display: none;
 }
 
-nav ul a.active + ul {
+nav ul ul a {
+  padding-left: 1rem;
+}
+
+nav ul li.active a + ul {
   display: initial;
 }
 
@@ -209,10 +213,6 @@ main.tmpl-home ol {
   transition: transform 0.33s ease-in-out;
 }
 
-/*
- fett im menü
- */
-
 #slider.eng {
   transform: translateX( 100% );
 }
@@ -235,10 +235,29 @@ main#cv > section {
   justify-content: flex-end;
 }
 
+.gallery-outer {
+  width: 80ch;
+  overflow-x: scroll;
+}
+
 .gallery {
   width: 1000%;
+  transition: transform 0.33s cubic-bezier(1,0,0,1);
+  position: relative;
 }
 
 .gallery > picture + picture {
   margin-left: var(--s1);
+}
+
+footer {
+  padding-top: var(--s2);
+}
+
+main#art ol + p {
+  margin-top: var(--s1);
+}
+
+main#art ol {
+  list-style-type: none;
 }

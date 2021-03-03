@@ -1,7 +1,6 @@
 ---
 layout: layouts/post.njk
 title: Research
-templateClass: tmpl-post
 eleventyNavigation:
     key: Research
 ---
