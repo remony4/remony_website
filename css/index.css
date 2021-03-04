@@ -238,6 +238,8 @@ main#cv > section {
 .gallery-outer {
   width: 80ch;
   overflow-x: scroll;
+  scrollbar-color: var(--darkgray) lightgray;
+  scrolbar-width: thin;
 }
 
 .gallery {
