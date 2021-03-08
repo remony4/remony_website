@@ -239,7 +239,19 @@ main#cv > section {
   width: 80ch;
   overflow-x: scroll;
   scrollbar-color: var(--darkgray) lightgray;
-  scrolbar-width: thin;
+  scrollbar-width: thin;
+}
+
+.gallery-outer::-webkit-scrollbar {
+  width: 11px;
+}
+
+.gallery-outer::-webkit-scrollbar-track {
+  background: lightgray;
+}
+
+.gallery-outer::-webkit-scrollbar-thumb {
+  background-color: var(--darkgray);
 }
 
 .gallery {
@@ -247,6 +259,11 @@ main#cv > section {
   transition: transform 0.33s cubic-bezier(1,0,0,1);
   position: relative;
 }
+
+.gallery picture img,
+.gallery picture source { 
+  display: block;
+} 
 
 .gallery > picture + picture {
   margin-left: var(--s1);
