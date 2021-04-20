@@ -3,6 +3,7 @@ layout: layouts/cv.njk
 title: CV
 eleventyNavigation:
     key: CV
+    order: 3
 ---
 
 <div class='german stack'> 
