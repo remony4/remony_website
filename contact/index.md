@@ -6,4 +6,10 @@ eleventyNavigation:
     order: 4
 ---
 
-I am a person that writes stuff.
+Rosi Grillmair
+Linz/Upper Austria/Austria
+
+[rosi@rgba.studio](mailto:rosi@rgba.studio)
+
+[Facebook](https://www.facebook.com/Remony4)
+[Instagram](https://www.instagram.com/remony4444/)
