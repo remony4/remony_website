@@ -69,9 +69,11 @@ module.exports = function(eleventyConfig) {
   async function galleryShortCode ( gallery, alt) {
 
     const dirname = path.dirname( this.page.inputPath );
+    console.log( dirname );
 
     const srcs = gallery
-      .map( i => { 
+      .map( i => {
+        console.log( path.join( './', dirname, i.trim()) );
         return path.join( './', dirname, i.trim());
       } );
 
