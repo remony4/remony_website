@@ -1,7 +1,7 @@
 ---
 title: Human Companions at Re-Connect Festival
 description: This is a post on My Blog about leveraging agile frameworks.
-date: 2021-04-8
+date: 2021-04-08
 tags: art
 layout: layouts/post.njk
 ---
