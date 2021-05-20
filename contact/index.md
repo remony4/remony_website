@@ -7,6 +7,7 @@ eleventyNavigation:
 ---
 
 I am ...
+
  * a freelance media artist
  * an advocate for open source and creative programming environments
  * an environmental activist
