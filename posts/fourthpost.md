@@ -1,17 +1,16 @@
 ---
-title: This is my fourth post.
+title: Crossing Europe 2021
 description: This is a post on My Blog about touchpoints and circling wagons.
-date: 2018-09-30
-tags: second-tag
+date: 2021-06-02
+tags: art
 layout: layouts/post.njk
 ---
 
-All agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+I´ll be hosting a workshop host at the YAAAS! Youth program of the film festival [Crossing Europe](https://www.crossingeurope.at/) giving an introduction to interactive animation and generative graphics with [vvvv](https://visualprogramming.net/).
 
-![Test](img/Image5.png "Optional title")
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+![Test](posts/1614844076108.gif "Optional title")
+[Test2](posts/1614844076120.gif "Optional title")
+[Test3](posts/1614844076123.gif "Optional title")
 
-## Section Header
-
-Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+[Workshop Info](https://www.crossingeurope.at/programm/yaaas_jugendschiene/yaaas_workshoprally)
