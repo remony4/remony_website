@@ -10,7 +10,7 @@ I´ll be hosting a workshop host at the YAAAS! Youth program of the film festiva
 
 
 ![Test](posts/1614844076108.gif "Optional title")
-[Test2](posts/1614844076120.gif "Optional title")
-[Test3](posts/1614844076123.gif "Optional title")
+![Test2](posts/1614844076120.gif "Optional title")
+![Test3](posts/1614844076123.gif "Optional title")
 
 [Workshop Info](https://www.crossingeurope.at/programm/yaaas_jugendschiene/yaaas_workshoprally)
