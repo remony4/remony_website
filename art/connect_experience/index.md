@@ -8,9 +8,6 @@ tags:
   - art
 ---
 
-{% set images = []}
-{% set alt_text = "gallery for Merkwürdige Momente" %}
-{% include "gallery.njk" %}
 
 ### Merkwürdige Momente
 
