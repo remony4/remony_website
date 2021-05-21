@@ -5,12 +5,15 @@ const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const Image = require("@11ty/eleventy-img");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const path = require('path')
+const embeds = require("eleventy-plugin-embed-everything");
+const glob = require("glob-promise");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.setDataDeepMerge(true);
+  eleventyConfig.addPlugin(embeds);
 
   eleventyConfig.addLayoutAlias('post', 'layouts/post.njk');
 
@@ -66,18 +69,12 @@ module.exports = function(eleventyConfig) {
     return Image.generateHTML(metadata, imageAttributes);
   }
 
-  async function galleryShortCode ( gallery, alt) {
+  async function galleryShortCode ( folder, alt ) {
+    console.log( `Generating gallery for ${ folder }` );
+    const dirname = path.join( path.dirname( this.page.inputPath ), folder );
 
-    const dirname = path.dirname( this.page.inputPath );
-    console.log( dirname );
-
-    const srcs = gallery
-      .map( i => {
-        console.log( path.join( './', dirname, i.trim()) );
-        return path.join( './', dirname, i.trim());
-      } );
-
-    const sizes = "100vw";
+    const srcs = await glob( `${ dirname }/*.{jpg,jpeg,png,gif}` );
+    const sizes = "10vw";
 
     const imageAttributes = {
       alt,
@@ -89,8 +86,8 @@ module.exports = function(eleventyConfig) {
     const images = await Promise.all(
       srcs.map( async i => {
         const im = await Image( i, {
-          heights: [null, 100, 200],
-          formats: ["webp", "avif", "jpeg"]
+          widths: [ 500 ],
+          formats: ["avif", "jpeg"]
         });
         
         return [im, Image.generateHTML(im, imageAttributes)];
@@ -100,7 +97,9 @@ module.exports = function(eleventyConfig) {
     const sum = images.reduce( ( acc, [ im, _ ] ) => acc + im['jpeg'][ 0 ].width , 0);
     const html = images.reduce( ( acc, [ _, im ] ) => acc + im, "");
 
-    return `<div class="gallery flex row" style="width: ${ sum }px;">${ html }</div>`;
+    console.log( `Finished generating gallery for ${ folder }` );
+
+    return `<div class="gallery-outer"> <div class="gallery flex row" style="width: ${ sum }px;">${ html } </div> </div>`;
   }
 
   eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
@@ -111,7 +110,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('img');
   eleventyConfig.addPassthroughCopy('css');
   eleventyConfig.addPassthroughCopy('js');
-  eleventyConfig.addPassthroughCopy('pdf');
 
   /* Markdown Plugins */
   let markdownIt = require('markdown-it');

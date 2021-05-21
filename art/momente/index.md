@@ -7,10 +7,7 @@ eleventyNavigation:
 tags:
   - art
 ---
-
-{% set images = ['IMG_20201130_115333.png', 'IMG_20201130_115602.png', './IMG_20201130_115644.png', './IMG_20201130_120756.png'] %}
-{% set alt_text = "gallery for Merkwürdige Momente" %}
-{% include "gallery.njk" %}
+{% gallery "windows", "gallery fuer windows" %}
 
 ### Merkwürdige Momente
 

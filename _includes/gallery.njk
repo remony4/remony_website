@@ -1,3 +1,5 @@
-<div class="gallery-outer">
-	{% gallery images, alt_text %}
-</div>
+{% macro gallery(params) %}
+    <div class="gallery-outer">
+	 {% gallery params.folder, params.alt_text %}
+    </div>
+{% endmacro %}
