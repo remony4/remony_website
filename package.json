@@ -33,6 +33,7 @@
   "dependencies": {
     "@11ty/eleventy-img": "^0.8.0",
     "@11ty/eleventy-navigation": "^0.1.6",
+    "eleventy-plugin-youtube-embed": "^1.6.3",
     "fast-glob": "^3.2.5"
   }
 }
