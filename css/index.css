@@ -159,6 +159,12 @@ header h2 {
   text-transform: uppercase;
 }
 
+header a,
+header a:visited {
+  text-decoration: none;
+  color: var(--darkgray);
+}
+
 nav {
   width: 20ch;
   margin: 0 var(--s1) var(--s1) var(--s0);
