@@ -1,7 +1,7 @@
 <ol reversed class="postlist stack-double">
 {% for post in postslist | reverse %}
   <li class="stack">
-      <h2>{{ post.data.title }}<time class="postlist-date" datetime="{{ post.date | htmlDateString }}"> — {{ post.date | readableDate }}</time></h2>
+      <h2>{{ post.data.title }}<time class="postlist-date" datetime="{{ post.date | htmlDateString }}"> — {% date post.date, post.data.end %}</time></h2>
       {{ post.templateContent | safe }}
   </li>
 {% endfor %}

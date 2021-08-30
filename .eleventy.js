@@ -17,11 +17,13 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addLayoutAlias('post', 'layouts/post.njk');
 
-  eleventyConfig.addFilter('readableDate', dateObj => {
+  function readableDate( dateObj ) {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
       'dd LLL yyyy'
     );
-  });
+  };
+
+  eleventyConfig.addFilter('readableDate', readableDate);
 
   eleventyConfig.addFilter('log', obj => {
     console.log( obj );
@@ -49,6 +51,17 @@ module.exports = function(eleventyConfig) {
 
     return array.slice(0, n);
   });
+
+  async function dateShortCode( date, end ) {
+    if( end ) {
+      return `${ readableDate( date ) } - ${ readableDate( end ) }`;
+    }
+    else {
+      return `${ readableDate( date ) }`;
+    }
+  };
+
+  eleventyConfig.addNunjucksAsyncShortcode( "date", dateShortCode );
 
   async function imageShortcode(src, alt, sizes) {
 
