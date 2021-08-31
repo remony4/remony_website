@@ -54,7 +54,7 @@ module.exports = function(eleventyConfig) {
 
   async function dateShortCode( date, end ) {
     if( end ) {
-      return `${ readableDate( date ) } - ${ readableDate( end ) }`;
+      return `${ readableDate( date ) } ↝ ${ readableDate( end ) }`;
     }
     else {
       return `${ readableDate( date ) }`;
