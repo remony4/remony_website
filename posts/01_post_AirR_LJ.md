@@ -1,5 +1,5 @@
 ---
-title: Artist in Residence at Ljudmila Lab/Project Atol
+title: Artist in Eleventy at Ljudmila Lab/Project Atol
 description: This is a post on My Blog about agile frameworks.
 date: 2021-02-01
 tags: art, research
@@ -14,9 +14,11 @@ layout: layouts/post.njk
 }
 ```
 
+Please update.
+
 After 2 years of like-minding with artist and curator Maja Burja and covid-postponing, I finally made it to Ljubljana and started my residency as “artistic intelligence” with Ljudmila Lab and project Atol, hosted by JSKD.
 
-![Test](img/Rosi-Grillmair-project.png "Optional title")
+
 
 There we talked a lot about natural and abstract phenomena. I let my spirit wander through invisible cities and other imaginary worlds crafted by author Italo Calvino, hosted a Code Poetry Workshop and reflected on my artistic works up to the point.
 
