@@ -23,7 +23,6 @@ After 2 years of like-minding with artist and curator Maja Burja and covid-postp
 
 There we talked a lot about natural and abstract phenomena. I let my spirit wander through invisible cities and other imaginary worlds crafted by author Italo Calvino, hosted a Code Poetry Workshop and reflected on my artistic works up to the point.
 
-![Test](img/photo5870657606127826332.jpg "Optional title")
 
 Finally and with great enthusiasm I decided to become an AI and invite others to do so as well. My initial question was about our social space - increasingly distant due to a pandemic and still closely interwoven by many types of relationships, rhythms of conversation and spread out over several platforms. In between all of this, AI services already function as mediators and conversation partners. How does this situation transform our social interactions?
 
