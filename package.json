@@ -36,6 +36,7 @@
     "eleventy-plugin-embed-everything": "^1.13.2",
     "eleventy-plugin-youtube-embed": "^1.6.3",
     "fast-glob": "^3.2.5",
-    "glob-promise": "^4.1.0"
+    "glob-promise": "^4.1.0",
+    "image-size": "^1.0.0"
   }
 }

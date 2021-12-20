@@ -7,6 +7,7 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const path = require('path')
 const embeds = require("eleventy-plugin-embed-everything");
 const glob = require("glob-promise");
+const sizeOf = require('image-size');
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
@@ -65,7 +66,7 @@ module.exports = function(eleventyConfig) {
 
   async function imageShortcode(src, alt, sizes) {
     let metadata = await Image(src, {
-      widths: [ 800 ],
+      widths: [ 600 ],
       formats: ["jpeg"]
     });
 
@@ -75,12 +76,17 @@ module.exports = function(eleventyConfig) {
     return `<img src="${data.url}" width="${data.width}" height="${data.height}" alt="${alt}" loading="lazy" decoding="async">`;
   }
 
+  function resizeTo( img, targetHeight ) {
+    const { height, width } = sizeOf( img );
+    return width * ( targetHeight / height );
+  }
+
   async function galleryShortCode ( folder, alt ) {
     console.log( `Generating gallery for ${ folder }` );
     const dirname = path.join( path.dirname( this.page.inputPath ), folder );
 
     const srcs = await glob( `${ dirname }/*.{jpg,jpeg,png,gif}` );
-    const sizes = "10vw";
+    const sizes = "100w";
 
     const imageAttributes = {
       alt,
@@ -88,11 +94,11 @@ module.exports = function(eleventyConfig) {
       loading: "eager",
       decoding: "async",
     };
-
     const images = await Promise.all(
       srcs.map( async i => {
+        const w = resizeTo( i, 400 );
         const im = await Image( i, {
-          widths: [ 500 ],
+          widths: [ w ],
           formats: ["avif", "jpeg"]
         });
         
