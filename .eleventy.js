@@ -64,22 +64,15 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksAsyncShortcode( "date", dateShortCode );
 
   async function imageShortcode(src, alt, sizes) {
-
-    console.log(src);
     let metadata = await Image(src, {
-      widths: [300, 600],
-      formats: ["avif", "jpeg"]
+      widths: [600],
+      formats: ["jpeg"]
     });
 
-    let imageAttributes = {
-      alt,
-      sizes,
-      loading: "lazy",
-      decoding: "async",
-    };
-
     // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
-    return Image.generateHTML(metadata, imageAttributes);
+    // return Image.generateHTML(metadata, imageAttributes);
+    const data = metadata.jpeg[metadata.jpeg.length - 1];
+    return `<img src="${data.url}" width="${data.width}" height="${data.height}" alt="${alt}" loading="lazy" decoding="async">`;
   }
 
   async function galleryShortCode ( folder, alt ) {
@@ -112,7 +105,7 @@ module.exports = function(eleventyConfig) {
 
     console.log( `Finished generating gallery for ${ folder }` );
 
-    return `<div class="gallery-outer"> <div class="gallery flex row" style="width: ${ sum }px;">${ html } </div> </div>`;
+    return `<div class="gallery-outer"> <div class="gallery flex row" style="width: ${ sum }px;"> ${ html } </div> </div>`;
   }
 
   eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
